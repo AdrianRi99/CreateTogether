@@ -1,0 +1,10 @@
+
+
+//        val originalText = "franz, whats up. Geht es dir auch gut"
+//        val modifiedText = "whats, my broo. Geht es dir auch gut - ich hoffe doch"
+
+        val originalText = "Die Liste von Denkmälern für den Februaraufstand 1934 gibt einen Über\u00ADblick über die öffent\u00ADliche Erinnerungs\u00ADkultur rund um die Ereig\u00ADnisse des Februar 1934. Diese war und ist stark von den jewei\u00ADligen poli\u00ADtischen Umständen geprägt. Der dikta\u00ADtorisch regierte Stände\u00ADstaat gedachte bis zum Anschluss Öster\u00ADreichs 1938 „seiner“ Opfer, wohin\u00ADgegen das Gedenken an gefal\u00ADlene Kämpfer der unter\u00ADlegenen Seite als Akt des Wider\u00ADstands gelten konnte. Im Dritten Reich wurden Denk\u00ADmäler des Stände\u00ADstaates häufig aktiv entfernt oder sie fielen Kriegs\u00ADzer\u00ADstörungen zum Opfer und wurden nach 1945 nicht wieder\u00ADerrichtet. Erst in der Zweiten Repu\u00ADblik konnten offiziell Denkmäler für gefal\u00ADlene Auf\u00ADständische er\u00ADrichtet werden, die nun"
+        val modifiedText = "für den  ein neuer satz juhu, der ist gut Februaraufstand  gibt einen Über\u00ADblick über das gefällt mmir richtig gut, die library funktioniert doch die öffent\u00ADliche Erinnerungs\u00ADkultur rund um   ein neuer satz juhu, der ist gut die Ereig\u00ADnisse des Februar 1934. on den jewei\u00ADligen poli\u00ADtischen Umständen geprägt.   ein neuer satz juhu, der ist gutDer dikta\u00ADtorisch regierte Stände\u00ADsta bis zum Anschluss Öster\u00ADreichs 1938 „seiner“ Opfer, wohin\u00ADgegen das Gedenken an gefal\u00ADlene Kämpfer der unter\u00ADlegenen Seite als Akt des Wider\u00ADstands. Im Dritten Reich wurden Denk\u00ADmäler des Stände\u00ADstaates häufig aktiv entfernt oder sie fielen Kriegs\u00ADzer\u00ADstörungen zum  nach 1945 nicht wieder\u00ADerrichtet. Erst in der Zweiten Repu\u00ADblik konnten offiziell Denkmäler  ein neuer satz juhu, der ist gut für gefal\u00ADlene Auf\u00ADständische er\u00ADrichtet werden, die nun"
+
+        val diffUtil = DiffUtil()
+        val newText = diffUtil.generateHighlightedTextWithAdditionsAndRemovals(originalText, modifiedText)
