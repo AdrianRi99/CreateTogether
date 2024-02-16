@@ -2,4 +2,14 @@
     <string name="app_name">CreateTogether</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="spinner_text_categories">
+        <item>Undefined</item>
+        <item>Novel</item>
+        <item>Poetry</item>
+        <item>Song</item>
+        <item>Movie Script</item>
+        <item>Idea</item>
+        <item>Plan</item>
+    </string-array>
 </resources>

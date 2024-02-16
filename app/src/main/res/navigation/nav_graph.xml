@@ -7,9 +7,16 @@
 
     <fragment
         android:id="@+id/createContentFragment"
-        android:name="com.example.createtogether.ui.fragments.CreateContentFragment"
+        android:name="com.example.createtogether.ui.fragments.createcontent.CreateContentFragment"
         android:label="fragment_create_content"
-        tools:layout="@layout/fragment_create_content" />
+        tools:layout="@layout/fragment_create_content" >
+        <action
+            android:id="@+id/action_createContentFragment_to_newTextFragment"
+            app:destination="@id/newTextFragment" />
+        <action
+            android:id="@+id/action_createContentFragment_to_openSavedTextsFragment"
+            app:destination="@id/openSavedTextsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.example.createtogether.ui.fragments.SearchFragment"
@@ -20,5 +27,26 @@
         android:name="com.example.createtogether.ui.fragments.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/newTextFragment"
+        android:name="com.example.createtogether.ui.fragments.createcontent.NewTextFragment"
+        android:label="fragment_new_text"
+        tools:layout="@layout/fragment_new_text" >
+        <action
+            android:id="@+id/action_newTextFragment_to_createContentFragment"
+            app:destination="@id/createContentFragment" />
+        <argument
+            android:name="selectedTextCategory"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/openSavedTextsFragment"
+        android:name="com.example.createtogether.ui.fragments.createcontent.OpenSavedTextsFragment"
+        android:label="fragment_open_saved_texts"
+        tools:layout="@layout/fragment_open_saved_texts" >
+        <action
+            android:id="@+id/action_openSavedTextsFragment_to_createContentFragment"
+            app:destination="@id/createContentFragment" />
+    </fragment>
 
 </navigation>
