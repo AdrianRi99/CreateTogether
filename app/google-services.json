@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "417236732222",
+    "firebase_url": "https://createtogether-7e22c-default-rtdb.europe-west1.firebasedatabase.app/",
+    "project_id": "createtogether-7e22c",
+    "storage_bucket": "createtogether-7e22c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:417236732222:android:1952522ba51dc0f35f846f",
+        "android_client_info": {
+          "package_name": "com.example.createtogether"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAikgekCgEKD4fOV36U-2OFtuT04--hugQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -27,8 +27,7 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
         binding.bottomNavigation.setupWithNavController(navController)
 
-        val userId = UserUtil.getUserId(this)
-        Log.d("Oha", userId)
+        UserUtil.getUserId(this)  //checken ob das probleme macht da ja rückgabewert nicht verarbeitet wird
     }
 }
 
