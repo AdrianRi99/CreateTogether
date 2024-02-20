@@ -62,6 +62,7 @@ class SearchResultsFragment : Fragment(R.layout.fragment_search_results), TextCo
 
     override fun onClick(textContent: TextContent) {
         Log.d("Oha", "Yap, geht")
-
+        val action = SearchResultsFragmentDirections.actionSearchResultsFragmentToDisplayTextFoundFragment(textContent)
+        findNavController().navigate(action)
     }
 }

@@ -63,7 +63,38 @@
         <argument
             android:name="textsFound"
             app:argType="com.example.createtogether.db.models.TextContent[]" />
+        <action
+            android:id="@+id/action_searchResultsFragment_to_displayTextFoundFragment"
+            app:destination="@id/displayTextFoundFragment" />
 
+    </fragment>
+    <fragment
+        android:id="@+id/displayTextFoundFragment"
+        android:name="com.example.createtogether.ui.fragments.searching.DisplayTextFoundFragment"
+        android:label="fragment_display_text_found"
+        tools:layout="@layout/fragment_display_text_found" >
+        <argument
+            android:name="textFound"
+            app:argType="com.example.createtogether.db.models.TextContent" />
+        <action
+            android:id="@+id/action_displayTextFoundFragment_to_viewChangesTextFoundFragment"
+            app:destination="@id/viewChangesTextFoundFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewChangesTextFoundFragment"
+        android:name="com.example.createtogether.ui.fragments.searching.ViewChangesTextFoundFragment"
+        android:label="fragment_view_changes_text_found"
+        tools:layout="@layout/fragment_view_changes_text_found" >
+        <argument
+            android:name="originalTextTitle"
+            app:argType="string" />
+        <argument android:name="originalText"
+            app:argType="string" />
+        <argument
+            android:name="modifiedTextTitle"
+            app:argType="string" />
+        <argument android:name="modifiedText"
+            app:argType="string" />
     </fragment>
 
 </navigation>
