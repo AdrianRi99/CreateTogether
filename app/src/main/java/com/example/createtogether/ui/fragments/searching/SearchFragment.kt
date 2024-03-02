@@ -55,13 +55,15 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
                     val textId = userSnapshot.child("textId").getValue(String::class.java) ?: ""
                     val textTitle = userSnapshot.child("textTitle").getValue(String::class.java) ?: ""
                     val text = userSnapshot.child("text").getValue(String::class.java) ?: ""
+                    val contributors = userSnapshot.child("contributors").getValue(String::class.java) ?: ""
+                    val likes = userSnapshot.child("likes").getValue(Int::class.java) ?: 0
 //                    if(creatorId != UserUtil.getUserId(requireActivity())) {  //später richig
 //                        textsFound.add(TextContent(creatorId, creator, text))
 //                    }
-                    textsFound.add(TextContent(creatorId, creator, textId, textTitle, text))
+                    textsFound.add(TextContent(creatorId, creator, textId, textTitle, text, selectedTextCategory, contributors, likes))
                 }
 
-                val action = SearchFragmentDirections.actionSearchFragmentToSearchResultsFragment(textsFound.toTypedArray())
+                val action = SearchFragmentDirections.actionSearchFragmentToSearchResultsFragment(textsFound.toTypedArray(), selectedTextCategory)
                 findNavController().navigate(action)
             }
 

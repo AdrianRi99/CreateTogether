@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_requests"
+    app:startDestination="@id/showRequestsFragment">
+
+    <fragment
+        android:id="@+id/showRequestsFragment"
+        android:name="com.example.createtogether.ui.requests.ShowRequestsFragment"
+        android:label="fragment_show_requests"
+        tools:layout="@layout/fragment_show_requests" >
+        <action
+            android:id="@+id/action_showRequestsFragment_to_viewChangesRequestFragment"
+            app:destination="@id/viewChangesRequestFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewChangesRequestFragment"
+        android:name="com.example.createtogether.ui.requests.ViewChangesRequestFragment"
+        android:label="ViewChangesRequestFragment"
+        tools:layout="@layout/fragment_view_changes_request">
+        <argument
+            android:name="request"
+            app:argType="com.example.createtogether.db.models.Request" />
+    </fragment>
+</navigation>

@@ -11,15 +11,13 @@ import com.example.createtogether.R
 import com.example.createtogether.db.models.TextContent
 
 
-class TextsFoundAdapter(
-    private val textContentItemClickInterface: TextContentItemClickInterface
-) : RecyclerView.Adapter<TextsFoundAdapter.TextsFoundViewHolder>() {
+class TextsSavedAdapter(
+    private val textContentSavedItemClickInterface: TextContentSavedItemClickInterface
+) : RecyclerView.Adapter<TextsSavedAdapter.TextsSavedViewHolder>() {
 
-    inner class TextsFoundViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class TextsSavedViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val textTitle: TextView = itemView.findViewById(R.id.tvTextTitle)
-        val creatorName: TextView = itemView.findViewById(R.id.tvCreatorName)
-        val likeCounter: TextView = itemView.findViewById(R.id.tvLikeCounter)
-
+        val category: TextView = itemView.findViewById(R.id.tvCategory)
     }
 
     //Differ for better performance
@@ -35,28 +33,32 @@ class TextsFoundAdapter(
 
     private val differ = AsyncListDiffer(this, diffCallback)
 
-    fun updateListOfTextsFound(list: List<TextContent>) = differ.submitList(list)
+    fun updateListOfSavedTexts(list: List<TextContent>) = differ.submitList(list)
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): TextsFoundViewHolder {
+    ): TextsSavedViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(
-            R.layout.row_item_textcontent,
+            R.layout.row_item_textcontent_saved,
             parent, false
         )
-        return TextsFoundViewHolder(itemView)
+        return TextsSavedViewHolder(itemView)
     }
 
-    override fun onBindViewHolder(holder: TextsFoundViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: TextsSavedViewHolder, position: Int) {
         val textContent = differ.currentList[position]
 
         holder.textTitle.text = textContent.textTitle
-        holder.creatorName.text = "by ${textContent.creator}"
-        holder.likeCounter.text = textContent.likes.toString()
+        holder.category.text = textContent.category
 
         holder.itemView.setOnClickListener {
-            textContentItemClickInterface.onClick(textContent)
+            textContentSavedItemClickInterface.onClick(textContent)
+        }
+
+        holder.itemView.setOnLongClickListener {
+            textContentSavedItemClickInterface.onLongClick(holder.itemView, textContent)
+            return@setOnLongClickListener true
         }
     }
 
@@ -65,6 +67,9 @@ class TextsFoundAdapter(
     }
 }
 
-interface TextContentItemClickInterface {
+interface TextContentSavedItemClickInterface {
     fun onClick(textContent: TextContent)
+
+    fun onLongClick(view: View, textContent: TextContent)
+
 }

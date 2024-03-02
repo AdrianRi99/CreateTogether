@@ -1,13 +1,20 @@
 package com.example.createtogether.db.models
 
 import android.os.Parcelable
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
+@Entity(tableName = "TextsTable")
 data class TextContent(
-    val creatorId: String,
-    val creator: String,
-    val textId: String,
-    val textTitle: String,
-    val text: String
-) : Parcelable
+    @ColumnInfo(name = "creatorId") val creatorId: String,
+    @ColumnInfo(name = "creator") val creator: String,
+    @PrimaryKey val textId: String,
+    @ColumnInfo(name = "textTitle") val textTitle: String,
+    @ColumnInfo(name = "text") val text: String,
+    @ColumnInfo(name = "category") val category: String,
+    @ColumnInfo(name = "contributors") val contributors: String?,
+    @ColumnInfo(name = "likes") val likes: Int
+    ) : Parcelable

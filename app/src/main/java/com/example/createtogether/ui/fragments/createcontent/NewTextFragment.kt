@@ -7,19 +7,24 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.createtogether.R
 import com.example.createtogether.db.models.TextContent
 import com.example.createtogether.databinding.FragmentNewTextBinding
+import com.example.createtogether.ui.viewmodels.ViewModel
 import com.example.createtogether.utility.UserUtil
 import com.google.firebase.database.FirebaseDatabase
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class NewTextFragment : Fragment(R.layout.fragment_new_text) {
 
     private lateinit var binding: FragmentNewTextBinding
     private lateinit var sharedPreferences: SharedPreferences
     private val args: NewTextFragmentArgs by navArgs()
+    private val viewModel: ViewModel by viewModels()
 
     private val databaseReference = FirebaseDatabase.getInstance().reference
     private val categoriesReference = databaseReference.child("categories")
@@ -49,8 +54,11 @@ class NewTextFragment : Fragment(R.layout.fragment_new_text) {
             val enteredText = binding.editTextNewText.text.toString()
 //            Log.d("Oha", enteredText)
 
-            val newText = TextContent(userId, savedUsername, textId, enteredTextTitle, enteredText)
+            val newText = TextContent(userId, savedUsername, textId, enteredTextTitle, enteredText, selectedTextCategory, null, 0)
+
             categoriesReference.child(selectedTextCategory).child(textId).setValue(newText)
+            viewModel.addText(newText)
+
             val action = NewTextFragmentDirections.actionNewTextFragmentToCreateContentFragment()
             findNavController().navigate(action)
         }

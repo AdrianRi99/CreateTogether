@@ -39,11 +39,13 @@ class SearchResultsFragment : Fragment(R.layout.fragment_search_results), TextCo
 
         setupRecyclerView()
         val textsFound = args.textsFound.toMutableList()
+        binding.tvCategory.text = args.selectedTextCategory
 
-        textsFound.let {
-            if(it.isNotEmpty()) {
+        textsFound.let { textContents ->
+            if(textContents.isNotEmpty()) {
                 binding.textViewNoTextsFound.text = ""
-                textsFoundAdapter.updateListOfTextsFound(it)
+                val sortedList = textsFound.sortedByDescending { it.likes }
+                textsFoundAdapter.updateListOfTextsFound(sortedList)
             }
         }
 
