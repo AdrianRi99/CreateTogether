@@ -8,25 +8,36 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.createtogether.R
 import com.example.createtogether.databinding.FragmentDisplayTextFoundBinding
 import com.example.createtogether.databinding.FragmentViewChangesTextFoundBinding
 import com.example.createtogether.db.models.Request
+import com.example.createtogether.db.models.TextContent
 import com.example.createtogether.ui.fragments.createcontent.OpenSavedTextsFragmentDirections
+import com.example.createtogether.ui.viewmodels.ViewModel
 import com.example.createtogether.utility.DiffUtil
 import com.example.createtogether.utility.UserUtil
 import com.google.firebase.database.FirebaseDatabase
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ViewChangesTextFoundFragment : Fragment(R.layout.fragment_view_changes_text_found) {
 
     private lateinit var binding: FragmentViewChangesTextFoundBinding
     private val args: ViewChangesTextFoundFragmentArgs by navArgs()
+    private val viewModel: ViewModel by viewModels()
 
     private lateinit var sharedPreferences: SharedPreferences
     private val databaseReference = FirebaseDatabase.getInstance().reference
     private val requestsReference = databaseReference.child("requests")
+    private val categoriesReference = databaseReference.child("categories")
+
+    private lateinit var textFound: TextContent
+    private lateinit var modifiedTextTitle: String
+    private lateinit var modifiedText: String
 
 
     override fun onCreateView(
@@ -43,12 +54,12 @@ class ViewChangesTextFoundFragment : Fragment(R.layout.fragment_view_changes_tex
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val textFound = args.textFound
+        textFound = args.textFound
 
         val originalTextTitle = textFound.textTitle
         val originalText = textFound.text
-        val modifiedTextTitle = args.modifiedTextTitle
-        val modifiedText = args.modifiedText
+        modifiedTextTitle = args.modifiedTextTitle
+        modifiedText = args.modifiedText
 
         val diffUtil = DiffUtil()
 
@@ -72,7 +83,14 @@ class ViewChangesTextFoundFragment : Fragment(R.layout.fragment_view_changes_tex
         }
 
         binding.btnSaveLocally.setOnClickListener {
-            //muss noch implementiert werden
+
+            if(UserUtil.getUserId(requireActivity()) == textFound.creatorId) {
+                Toast.makeText(requireActivity(), "You are the creator", Toast.LENGTH_LONG).show()
+                saveLocally("Downloaded")
+            } else {
+                Toast.makeText(requireActivity(), "You are not the creator", Toast.LENGTH_LONG).show()
+                saveLocally("Copied")
+            }
         }
 
         binding.btnSendRequest.setOnClickListener {
@@ -105,4 +123,29 @@ class ViewChangesTextFoundFragment : Fragment(R.layout.fragment_view_changes_tex
             findNavController().popBackStack()
         }
     }
+
+    private fun saveLocally(status: String) {
+        val textId =
+            categoriesReference.push().key ?: ""
+        //muss noch implementiert werden
+        val textToSave = TextContent(
+            textFound.creatorId,
+            textFound.creator,
+            textId,
+            textFound.textId,
+            modifiedTextTitle,
+            modifiedText,
+            textFound.category,
+            textFound.contributors,
+            textFound.likes,
+            status
+        )
+
+        viewModel.addText(textToSave)
+
+        val action = ViewChangesTextFoundFragmentDirections.actionViewChangesTextFoundFragmentToSearchFragment()
+        findNavController().navigate(action)
+    }
+
+
 }

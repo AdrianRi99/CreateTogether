@@ -1,6 +1,7 @@
 package com.example.createtogether.ui.fragments.createcontent
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -20,7 +21,8 @@ import com.google.firebase.database.FirebaseDatabase
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class OpenSavedTextsFragment : Fragment(R.layout.fragment_open_saved_texts), TextContentSavedItemClickInterface {
+class OpenSavedTextsFragment : Fragment(R.layout.fragment_open_saved_texts),
+    TextContentSavedItemClickInterface {
 
     private lateinit var binding: FragmentOpenSavedTextsBinding
     private lateinit var textsSavedAdapter: TextsSavedAdapter
@@ -29,12 +31,14 @@ class OpenSavedTextsFragment : Fragment(R.layout.fragment_open_saved_texts), Tex
     private val databaseReference = FirebaseDatabase.getInstance().reference
     private val categoriesReference = databaseReference.child("categories")
 
+    private lateinit var groupedMap: Map<String, List<TextContent>>
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentOpenSavedTextsBinding.inflate(inflater,container,false)
+        binding = FragmentOpenSavedTextsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -44,19 +48,58 @@ class OpenSavedTextsFragment : Fragment(R.layout.fragment_open_saved_texts), Tex
         setupRecyclerView()
 
         viewModel.allTexts.observe(viewLifecycleOwner) { texts ->
-            if(texts.toString() != "[]"){
+            if (texts.toString() != "[]") {
                 binding.textViewNoSavedTextsFound.text = ""
-            }else{
+            } else {
                 binding.textViewNoSavedTextsFound.text = "No Saved Texts found"
             }
 
-            texts?.let {
-                textsSavedAdapter.updateListOfSavedTexts(it)
-            }
+
+            groupedMap = texts.groupBy { it.textAuthenticator }
+
+            val firstTextContentFromEachGroup: List<TextContent> = groupedMap
+                .mapValues { (_, contents) -> contents.firstOrNull() } // Das erste TextContent-Objekt oder null
+                .values
+                .filterNotNull()
+
+            textsSavedAdapter.updateListOfSavedTexts(firstTextContentFromEachGroup)
+
+//            firstTextContentFromEachGroup.forEach {
+//                Log.d("New", it.textAuthenticator)
+//                Log.d("New", it.textTitle)
+//                Log.d("New", "")
+//            }
+
+
+            //Logging
+//            groupedMap.forEach { (authenticator, contents) ->
+//                if (contents.isNotEmpty()) {
+//
+//                    contents.forEach { content ->
+//                        Log.d("Test", content.textAuthenticator)
+//                    }
+//                    Log.d("Test", "")
+//
+//                } else {
+//                    // Log für leere Gruppen
+//                }
+//            }
+//            Log.d("Test", "")
+//            groupedMap.forEach { (authenticator, contents) ->
+//                Log.d("Test", authenticator)
+//
+//            }
+
+//
+//
+//            texts?.let {
+//                textsSavedAdapter.updateListOfSavedTexts(it)
+//            }
         }
 
         binding.btnBack.setOnClickListener {
-            val action = OpenSavedTextsFragmentDirections.actionOpenSavedTextsFragmentToCreateContentFragment()
+            val action =
+                OpenSavedTextsFragmentDirections.actionOpenSavedTextsFragmentToCreateContentFragment()
             findNavController().navigate(action)
         }
     }
@@ -68,8 +111,31 @@ class OpenSavedTextsFragment : Fragment(R.layout.fragment_open_saved_texts), Tex
     }
 
     override fun onClick(textContent: TextContent) {
-        val action = OpenSavedTextsFragmentDirections.actionOpenSavedTextsFragmentToDisplayTextSavedFragment(textContent)
-        findNavController().navigate(action)
+
+        val textAuthenticator = textContent.textAuthenticator
+        if (groupedMap.containsKey(textAuthenticator)) {
+            val listOfTextContentForTheKey: List<TextContent> = groupedMap[textAuthenticator] ?: emptyList()
+
+            if(listOfTextContentForTheKey.size == 1) {
+                val singleTextContent = listOfTextContentForTheKey.first()
+                val action =
+                    OpenSavedTextsFragmentDirections.actionOpenSavedTextsFragmentToDisplayTextSavedFragment(
+                        singleTextContent
+                    )
+                findNavController().navigate(action)
+            } else {
+                val action = OpenSavedTextsFragmentDirections.actionOpenSavedTextsFragmentToShowVersionsOfSavedTextFragment(listOfTextContentForTheKey.toTypedArray())
+                findNavController().navigate(action)
+            }
+
+//            // Iteriere durch die Liste der TextContent-Objekte für den bestimmten Schlüssel
+//            for (textContentInLIst in listOfTextContentForTheKey) {
+//                Log.d("New", textContentInLIst.textAuthenticator)
+//                Log.d("New", textContentInLIst.textTitle)
+//                Log.d("New", "")
+//            }
+        }
+
     }
 
     override fun onLongClick(view: View, textContent: TextContent) {

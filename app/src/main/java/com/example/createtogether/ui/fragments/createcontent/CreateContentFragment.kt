@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.createtogether.R
 import com.example.createtogether.databinding.FragmentCreateContentBinding
+import com.example.createtogether.ui.dialogs.UploadVersionDialog
 import com.example.createtogether.ui.requests.RequestsActivity
 
 class CreateContentFragment : Fragment(R.layout.fragment_create_content) {

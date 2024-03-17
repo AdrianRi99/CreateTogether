@@ -7,7 +7,7 @@
     tools:context=".ui.requests.ShowRequestsFragment">
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/tvInspirationTerms"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -28,7 +28,7 @@
         app:dividerColor="@color/lightGrey"
         app:dividerThickness="3dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/tvInspirationTerms" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewRequests"

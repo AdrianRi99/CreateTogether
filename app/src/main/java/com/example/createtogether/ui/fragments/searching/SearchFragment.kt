@@ -53,14 +53,16 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
                     val creatorId = userSnapshot.child("creatorId").getValue(String::class.java) ?: ""
                     val creator = userSnapshot.child("creator").getValue(String::class.java) ?: ""
                     val textId = userSnapshot.child("textId").getValue(String::class.java) ?: ""
+                    val textAuthenticator = userSnapshot.child("textAuthenticator").getValue(String::class.java) ?: ""
                     val textTitle = userSnapshot.child("textTitle").getValue(String::class.java) ?: ""
                     val text = userSnapshot.child("text").getValue(String::class.java) ?: ""
                     val contributors = userSnapshot.child("contributors").getValue(String::class.java) ?: ""
                     val likes = userSnapshot.child("likes").getValue(Int::class.java) ?: 0
+                    val status = userSnapshot.child("status").getValue(String::class.java) ?: ""
 //                    if(creatorId != UserUtil.getUserId(requireActivity())) {  //später richig
 //                        textsFound.add(TextContent(creatorId, creator, text))
 //                    }
-                    textsFound.add(TextContent(creatorId, creator, textId, textTitle, text, selectedTextCategory, contributors, likes))
+                    textsFound.add(TextContent(creatorId, creator, textId, textAuthenticator, textTitle, text, selectedTextCategory, contributors, likes, status))
                 }
 
                 val action = SearchFragmentDirections.actionSearchFragmentToSearchResultsFragment(textsFound.toTypedArray(), selectedTextCategory)

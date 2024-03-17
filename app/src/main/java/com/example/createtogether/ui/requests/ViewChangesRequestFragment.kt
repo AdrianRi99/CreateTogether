@@ -106,11 +106,13 @@ class ViewChangesRequestFragment : Fragment(R.layout.fragment_view_changes_reque
                             textContent.creatorId,
                             textContent.creator,
                             textContent.textId,
+                            textContent.textAuthenticator,
                             modifiedTextTitle,
                             modifiedText,
                             textContent.category,
                             contributors,
-                            likes
+                            likes,
+                            textContent.status
                         )
 
                         categoriesReference.child(textContent.category).child(textContent.textId)
@@ -121,11 +123,13 @@ class ViewChangesRequestFragment : Fragment(R.layout.fragment_view_changes_reque
                             textContent.creatorId,
                             textContent.creator,
                             textContent.textId,
+                            textContent.textAuthenticator,
                             modifiedTextTitle,
                             modifiedText,
                             textContent.category,
                             contributors,
-                            0
+                            0,
+                            textContent.status
                         )
 
                         categoriesReference.child(textContent.category).child(textContent.textId)

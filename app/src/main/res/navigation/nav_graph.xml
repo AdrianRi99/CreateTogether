@@ -54,6 +54,9 @@
         <action
             android:id="@+id/action_openSavedTextsFragment_to_displayTextSavedFragment"
             app:destination="@id/displayTextSavedFragment" />
+        <action
+            android:id="@+id/action_openSavedTextsFragment_to_showVersionsOfSavedTextFragment"
+            app:destination="@id/showVersionsOfSavedTextFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchResultsFragment"
@@ -131,6 +134,21 @@
         <action
             android:id="@+id/action_viewChangesTextSavedFragment_to_createContentFragment"
             app:destination="@id/createContentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/showVersionsOfSavedTextFragment"
+        android:name="com.example.createtogether.ui.fragments.createcontent.ShowVersionsOfSavedTextFragment"
+        android:label="fragment_show_versions_of_saved_text"
+        tools:layout="@layout/fragment_show_versions_of_saved_text" >
+        <action
+            android:id="@+id/action_showVersionsOfSavedTextFragment_to_displayTextSavedFragment"
+            app:destination="@id/displayTextSavedFragment" />
+        <argument
+            android:name="textVersions"
+            app:argType="com.example.createtogether.db.models.TextContent[]" />
+        <action
+            android:id="@+id/action_showVersionsOfSavedTextFragment_to_openSavedTextsFragment"
+            app:destination="@id/openSavedTextsFragment" />
     </fragment>
 
 </navigation>
