@@ -9,7 +9,8 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.createtogether.R
 import com.example.createtogether.databinding.FragmentCreateContentBinding
-import com.example.createtogether.ui.dialogs.UploadVersionDialog
+import com.example.createtogether.ui.tempPackage.ProfileActivity
+import com.example.createtogether.ui.tempPackage.WriteTextActivity
 import com.example.createtogether.ui.requests.RequestsActivity
 
 class CreateContentFragment : Fragment(R.layout.fragment_create_content) {
@@ -33,10 +34,19 @@ class CreateContentFragment : Fragment(R.layout.fragment_create_content) {
             startActivity(intent)
         }
 
+        binding.iVProfile.setOnClickListener {
+            val intent = Intent(requireContext(), ProfileActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.btnStartWriting.setOnClickListener {
             val selectedTextCategory = binding.spinnerTextCategories.selectedItem.toString()
-            val action = CreateContentFragmentDirections.actionCreateContentFragmentToNewTextFragment(selectedTextCategory)
-            findNavController().navigate(action)
+
+            val intent = Intent(requireContext(), WriteTextActivity::class.java)
+            intent.putExtra("SelectedTextCategory", selectedTextCategory)
+            startActivity(intent)
+//            val action = CreateContentFragmentDirections.actionCreateContentFragmentToNewTextFragment(selectedTextCategory)
+//            findNavController().navigate(action)
         }
 
         binding.btnOpenSavedTexts.setOnClickListener {

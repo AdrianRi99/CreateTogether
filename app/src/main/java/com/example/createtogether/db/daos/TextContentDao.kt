@@ -18,11 +18,20 @@ interface TextContentDao {
     @Update
     suspend fun update(textContent: TextContent)
 
+    //from PolicyChecker
+//    @Query("UPDATE FilesTable SET fileTitle = :newTitle WHERE id = :fileId")
+//    suspend fun updateFileTitle(fileId: Int, newTitle: String)
+
     @Delete
     suspend fun delete(textContent: TextContent)
 
     @Query("Select * from TextsTable")
     fun getAllTexts(): LiveData<List<TextContent>>
+
+
+    //From CA-T
+//    @Query("Select * from notesTable order by id ASC")  //ASC -> ascending
+//    fun getAllReports(): LiveData<List<Report>>
 
     @Query("SELECT * FROM TextsTable WHERE textId = :textId")
     fun getTextById(textId: String): TextContent?

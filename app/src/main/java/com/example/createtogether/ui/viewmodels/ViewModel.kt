@@ -28,6 +28,11 @@ class ViewModel @Inject constructor(
         repository.update(textContent)
     }
 
+    //from PolicyChecker
+//    fun updateFileTitle(fileId: Int, newTitle: String) = viewModelScope.launch(Dispatchers.IO) {  //Dispatchers.IO -> to run code in Background Threat
+//        repository.updateFileTitle(fileId, newTitle)
+//    }
+
     fun deleteText(textContent: TextContent) = viewModelScope.launch(Dispatchers.IO) {  //Dispatchers.IO -> to run code in Background Threat
         repository.delete(textContent)
     }

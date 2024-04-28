@@ -16,3 +16,16 @@ data class Request(
     @ColumnInfo(name = "modifiedTextTitle") val modifiedTextTitle: String,
     @ColumnInfo(name = "modifiedText") val modifiedText: String
     ) : Parcelable
+
+
+//From CA-T
+//@Entity(tableName = "challengeTable")
+//class Challenge (@ColumnInfo(name = "goalOfApproaches") val goalOfApproaches :String,
+//                 @ColumnInfo(name = "actualApproaches") val actualApproaches :String,
+//                 @ColumnInfo(name = "totalSuccesses") val totalSuccesses :String,
+//                 @ColumnInfo(name = "totalHesitations") val totalHesitations :String,
+//                 @ColumnInfo(name = "dateChallengeCreated") val dateChallengeCreated :String,
+//                 @ColumnInfo(name = "timeForChallenge") val timeForChallenge :String){
+//    @PrimaryKey(autoGenerate = true)
+//    var id = 0
+//}

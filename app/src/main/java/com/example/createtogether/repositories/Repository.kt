@@ -21,6 +21,11 @@ class Repository @Inject constructor(
         textContentDao.update(textContent)
     }
 
+    //From PolicyChecker
+//    suspend fun updateFileTitle(fileId: Int, newTitle: String) {
+//        filesDao.updateFileTitle(fileId, newTitle)
+//    }
+
     suspend fun delete(textContent: TextContent) {
         textContentDao.delete(textContent)
     }
@@ -29,9 +34,5 @@ class Repository @Inject constructor(
         return textContentDao.getTextById(textId)
     }
 
-//    suspend fun getTextById(textId: String): TextContent? {
-//        return withContext(Dispatchers.IO) {
-//            textContentDao.getTextById(textId)
-//        }
-//    }
+
 }

@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="156dp"
         android:text="Create some content"
-        android:textSize="30sp"
+        android:textSize="32sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +61,7 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="50dp"
         android:text="Or work on a previously created text"
         android:textSize="17sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -82,10 +82,20 @@
         android:id="@+id/btnRequests"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
         android:text="Show Requests"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iVProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_profile_large"
+        app:layout_constraintBottom_toBottomOf="@+id/btnRequests"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnRequests" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
