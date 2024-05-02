@@ -29,15 +29,15 @@
         app:layout_constraintStart_toEndOf="@+id/tvInspirationTerms"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btnBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:text="Back"
-        app:layout_constraintBottom_toBottomOf="@+id/tvInspirationTerms"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvInspirationTerms" />
+<!--    <Button-->
+<!--        android:id="@+id/btnBack"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginEnd="16dp"-->
+<!--        android:text="Back"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/tvInspirationTerms"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/tvInspirationTerms" />-->
 
 
     <com.google.android.material.divider.MaterialDivider
@@ -49,7 +49,7 @@
         app:dividerColor="@color/lightGrey"
         app:dividerThickness="3dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnBack" />
+        app:layout_constraintTop_toBottomOf="@+id/tvInspirationTerms" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewShowVersionsOfText"

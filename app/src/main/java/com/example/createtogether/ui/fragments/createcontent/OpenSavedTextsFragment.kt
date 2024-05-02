@@ -97,11 +97,11 @@ class OpenSavedTextsFragment : Fragment(R.layout.fragment_open_saved_texts),
 //            }
         }
 
-        binding.btnBack.setOnClickListener {
-            val action =
-                OpenSavedTextsFragmentDirections.actionOpenSavedTextsFragmentToCreateContentFragment()
-            findNavController().navigate(action)
-        }
+//        binding.btnBack.setOnClickListener {
+//            val action =
+//                OpenSavedTextsFragmentDirections.actionOpenSavedTextsFragmentToCreateContentFragment()
+//            findNavController().navigate(action)
+//        }
     }
 
     private fun setupRecyclerView() = binding.recyclerViewSavedTexts.apply {

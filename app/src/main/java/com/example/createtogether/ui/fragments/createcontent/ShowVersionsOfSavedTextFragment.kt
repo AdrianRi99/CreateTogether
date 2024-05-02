@@ -51,11 +51,11 @@ class ShowVersionsOfSavedTextFragment : Fragment(R.layout.fragment_show_versions
 
         binding.tvShowNumberOfVersions.text = textVersions.size.toString()
 
-        binding.btnBack.setOnClickListener {
-            val action =
-                ShowVersionsOfSavedTextFragmentDirections.actionShowVersionsOfSavedTextFragmentToOpenSavedTextsFragment()
-            findNavController().navigate(action)
-        }
+//        binding.btnBack.setOnClickListener {
+//            val action =
+//                ShowVersionsOfSavedTextFragmentDirections.actionShowVersionsOfSavedTextFragmentToOpenSavedTextsFragment()
+//            findNavController().navigate(action)
+//        }
     }
 
     private fun setupRecyclerView() = binding.recyclerViewShowVersionsOfText.apply {

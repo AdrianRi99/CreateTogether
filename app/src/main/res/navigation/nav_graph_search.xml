@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_requests"
+    app:startDestination="@id/searchResultsFragment">
+
+
+<!--    <fragment-->
+<!--        android:id="@+id/testFragment"-->
+<!--        android:name="com.example.createtogether.ui.tempPackage.TestFragment"-->
+<!--        android:label="fragment_test"-->
+<!--        tools:layout="@layout/fragment_test" >-->
+<!--    </fragment>-->
+
+    <fragment
+        android:id="@+id/searchResultsFragment"
+        android:name="com.example.createtogether.ui.fragments.searching.SearchResultsFragment"
+        android:label="fragment_search_results"
+        tools:layout="@layout/fragment_search_results" >
+<!--        <action-->
+<!--            android:id="@+id/action_searchResultsFragment_to_searchFragment"-->
+<!--            app:destination="@id/searchFragment" />-->
+<!--        <argument-->
+<!--            android:name="textsFound"-->
+<!--            app:argType="com.example.createtogether.db.models.TextContent[]" />-->
+        <action
+            android:id="@+id/action_searchResultsFragment_to_displayTextFoundFragment"
+            app:destination="@id/displayTextFoundFragment" />
+        <argument
+            android:name="selectedTextCategory"
+            app:argType="string" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/displayTextFoundFragment"
+        android:name="com.example.createtogether.ui.fragments.searching.DisplayTextFoundFragment"
+        android:label="fragment_display_text_found"
+        tools:layout="@layout/fragment_display_text_found" >
+        <argument
+            android:name="textFound"
+            app:argType="com.example.createtogether.db.models.TextContent" />
+        <action
+            android:id="@+id/action_displayTextFoundFragment_to_viewChangesTextFoundFragment"
+            app:destination="@id/viewChangesTextFoundFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/viewChangesTextFoundFragment"
+        android:name="com.example.createtogether.ui.fragments.searching.ViewChangesTextFoundFragment"
+        android:label="fragment_view_changes_text_found"
+        tools:layout="@layout/fragment_view_changes_text_found" >
+        <argument
+            android:name="textFound"
+            app:argType="com.example.createtogether.db.models.TextContent" />
+        <argument
+            android:name="modifiedTextTitle"
+            app:argType="string" />
+        <argument android:name="modifiedText"
+            app:argType="string" />
+<!--        <action-->
+<!--            android:id="@+id/action_viewChangesTextFoundFragment_to_searchFragment"-->
+<!--            app:destination="@id/searchFragment" />-->
+    </fragment>
+</navigation>

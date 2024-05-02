@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_requests"
+    app:startDestination="@id/openSavedTextsFragment">
+
+
+    <fragment
+        android:id="@+id/openSavedTextsFragment"
+        android:name="com.example.createtogether.ui.fragments.createcontent.OpenSavedTextsFragment"
+        android:label="fragment_open_saved_texts"
+        tools:layout="@layout/fragment_open_saved_texts" >
+        <!--        <action-->
+        <!--            android:id="@+id/action_openSavedTextsFragment_to_createContentFragment"-->
+        <!--            app:destination="@id/createContentFragment" />-->
+        <action
+            android:id="@+id/action_openSavedTextsFragment_to_displayTextSavedFragment"
+            app:destination="@id/displayTextSavedFragment" />
+        <action
+            android:id="@+id/action_openSavedTextsFragment_to_showVersionsOfSavedTextFragment"
+            app:destination="@id/showVersionsOfSavedTextFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/displayTextSavedFragment"
+        android:name="com.example.createtogether.ui.fragments.createcontent.DisplayTextSavedFragment"
+        android:label="DisplayTextSavedFragment"
+        tools:layout="@layout/fragment_display_text_saved">
+        <argument
+            android:name="textSaved"
+            app:argType="com.example.createtogether.db.models.TextContent" />
+        <action
+            android:id="@+id/action_displayTextSavedFragment_to_viewChangesTextSavedFragment"
+            app:destination="@id/viewChangesTextSavedFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/viewChangesTextSavedFragment"
+        android:name="com.example.createtogether.ui.fragments.createcontent.ViewChangesTextSavedFragment"
+        android:label="ViewChangesTextSavedFragment"
+        tools:layout="@layout/fragment_view_changes_text_saved">
+        <argument
+            android:name="textSaved"
+            app:argType="com.example.createtogether.db.models.TextContent" />
+        <argument
+            android:name="modifiedTextTitle"
+            app:argType="string" />
+        <argument android:name="modifiedText"
+            app:argType="string" />
+        <!--        <action-->
+        <!--            android:id="@+id/action_viewChangesTextSavedFragment_to_createContentFragment"-->
+        <!--            app:destination="@id/createContentFragment" />-->
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/showVersionsOfSavedTextFragment"
+        android:name="com.example.createtogether.ui.fragments.createcontent.ShowVersionsOfSavedTextFragment"
+        android:label="fragment_show_versions_of_saved_text"
+        tools:layout="@layout/fragment_show_versions_of_saved_text" >
+        <action
+            android:id="@+id/action_showVersionsOfSavedTextFragment_to_displayTextSavedFragment"
+            app:destination="@id/displayTextSavedFragment" />
+        <argument
+            android:name="textVersions"
+            app:argType="com.example.createtogether.db.models.TextContent[]" />
+<!--        <action-->
+<!--            android:id="@+id/action_showVersionsOfSavedTextFragment_to_openSavedTextsFragment"-->
+<!--            app:destination="@id/openSavedTextsFragment" />-->
+    </fragment>
+</navigation>

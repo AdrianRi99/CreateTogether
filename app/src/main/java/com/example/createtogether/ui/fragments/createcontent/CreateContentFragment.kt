@@ -12,6 +12,7 @@ import com.example.createtogether.databinding.FragmentCreateContentBinding
 import com.example.createtogether.ui.tempPackage.ProfileActivity
 import com.example.createtogether.ui.tempPackage.WriteTextActivity
 import com.example.createtogether.ui.requests.RequestsActivity
+import com.example.createtogether.ui.tempPackage.SavedTextsActivity
 
 class CreateContentFragment : Fragment(R.layout.fragment_create_content) {
 
@@ -50,8 +51,11 @@ class CreateContentFragment : Fragment(R.layout.fragment_create_content) {
         }
 
         binding.btnOpenSavedTexts.setOnClickListener {
-            val action = CreateContentFragmentDirections.actionCreateContentFragmentToOpenSavedTextsFragment()
-            findNavController().navigate(action)
+//            val action = CreateContentFragmentDirections.actionCreateContentFragmentToOpenSavedTextsFragment()
+//            findNavController().navigate(action)
+
+            val intent = Intent(requireContext(), SavedTextsActivity::class.java)
+            startActivity(intent)
         }
     }
 }

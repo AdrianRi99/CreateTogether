@@ -115,13 +115,14 @@ class ViewChangesTextFoundFragment : Fragment(R.layout.fragment_view_changes_tex
             val request = Request(requestId, "Waiting for review", savedUsername, textFound.textId, modifiedTextTitle, modifiedText)
             requestsReference.child(textFound.creatorId).child(requestId).setValue(request)
 
-            val action = ViewChangesTextFoundFragmentDirections.actionViewChangesTextFoundFragmentToSearchFragment()
-            findNavController().navigate(action)
+//            val action = ViewChangesTextFoundFragmentDirections.actionViewChangesTextFoundFragmentToSearchFragment()
+//            findNavController().navigate(action)
+            requireActivity().finish()
         }
 
-        binding.btnBack.setOnClickListener {
-            findNavController().popBackStack()
-        }
+//        binding.btnBack.setOnClickListener {
+//            findNavController().popBackStack()
+//        }
     }
 
     private fun saveLocally(status: String) {
@@ -143,8 +144,9 @@ class ViewChangesTextFoundFragment : Fragment(R.layout.fragment_view_changes_tex
 
         viewModel.addText(textToSave)
 
-        val action = ViewChangesTextFoundFragmentDirections.actionViewChangesTextFoundFragmentToSearchFragment()
-        findNavController().navigate(action)
+//        val action = ViewChangesTextFoundFragmentDirections.actionViewChangesTextFoundFragmentToSearchFragment()
+//        findNavController().navigate(action)
+        requireActivity().finish()
     }
 
 

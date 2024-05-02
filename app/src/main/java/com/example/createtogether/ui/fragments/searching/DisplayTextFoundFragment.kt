@@ -97,9 +97,9 @@ class DisplayTextFoundFragment : Fragment(R.layout.fragment_display_text_found) 
             findNavController().navigate(action)
         }
 
-        binding.btnBack.setOnClickListener {
-            findNavController().popBackStack()
-        }
+//        binding.btnBack.setOnClickListener {
+//            findNavController().popBackStack()
+//        }
 
     }
 }

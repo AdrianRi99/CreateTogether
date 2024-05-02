@@ -155,9 +155,9 @@ class ViewChangesRequestFragment : Fragment(R.layout.fragment_view_changes_reque
 
         }
 
-        binding.btnBack.setOnClickListener {
-            findNavController().popBackStack()
-        }
+//        binding.btnBack.setOnClickListener {
+//            findNavController().popBackStack()
+//        }
     }
 
     private fun generateLayout() {

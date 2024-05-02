@@ -80,9 +80,9 @@ class DisplayTextSavedFragment : Fragment(R.layout.fragment_display_text_saved) 
 
         }
 
-        binding.btnBack.setOnClickListener {
-            findNavController().popBackStack()
-        }
+//        binding.btnBack.setOnClickListener {
+//            findNavController().popBackStack()
+//        }
 
     }
 }

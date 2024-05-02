@@ -106,9 +106,9 @@ class ViewChangesTextSavedFragment : Fragment(R.layout.fragment_view_changes_tex
             }
         }
 
-        binding.btnBack.setOnClickListener {
-            findNavController().popBackStack()
-        }
+//        binding.btnBack.setOnClickListener {
+//            findNavController().popBackStack()
+//        }
     }
 
     private fun updateText() {
@@ -173,9 +173,10 @@ class ViewChangesTextSavedFragment : Fragment(R.layout.fragment_view_changes_tex
             }
         })
 
-        val action =
-            ViewChangesTextSavedFragmentDirections.actionViewChangesTextSavedFragmentToCreateContentFragment()
-        findNavController().navigate(action)
+//        val action =
+//            ViewChangesTextSavedFragmentDirections.actionViewChangesTextSavedFragmentToCreateContentFragment()
+//        findNavController().navigate(action)
+        requireActivity().finish()
     }
 
     override fun confirm() {

@@ -14,7 +14,13 @@
         android:theme="@style/Theme.CreateTogether"
         tools:targetApi="31">
         <activity
+            android:name=".ui.tempPackage.SearchActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.tempPackage.WriteTextActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.tempPackage.SavedTextsActivity"
             android:exported="false" />
         <activity
             android:name=".ui.tempPackage.ProfileActivity"

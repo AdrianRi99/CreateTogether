@@ -1,15 +1,22 @@
 package com.example.createtogether.ui.fragments.searching
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.createtogether.R
 import com.example.createtogether.db.models.TextContent
 import com.example.createtogether.databinding.FragmentSearchBinding
+import com.example.createtogether.ui.tempPackage.Person
+import com.example.createtogether.ui.tempPackage.SavedTextsActivity
+import com.example.createtogether.ui.tempPackage.SearchActivity
+import com.example.createtogether.ui.viewmodels.SharedViewModel
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -22,7 +29,6 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
     private val categoriesReference = databaseReference.child("categories")
     private val textsFound = mutableListOf<TextContent>()
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,7 +47,6 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
             searchForTexts(selectedTextCategory)
         }
     }
-
 
     private fun searchForTexts(selectedTextCategory: String) {
         // Hier führen wir eine einmalige Abfrage auf dem "users" Knoten der Realtime Database durch
@@ -65,8 +70,15 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
                     textsFound.add(TextContent(creatorId, creator, textId, textAuthenticator, textTitle, text, selectedTextCategory, contributors, likes, status))
                 }
 
-                val action = SearchFragmentDirections.actionSearchFragmentToSearchResultsFragment(textsFound.toTypedArray(), selectedTextCategory)
-                findNavController().navigate(action)
+//                val action = SearchFragmentDirections.actionSearchFragmentToSearchResultsFragment(textsFound.toTypedArray(), selectedTextCategory)
+//                findNavController().navigate(action)
+
+                val intent = Intent(requireContext(), SearchActivity::class.java)
+                intent.putParcelableArrayListExtra("searchResults", ArrayList(textsFound))
+                intent.putExtra("selectedTextCategory", selectedTextCategory)
+                startActivity(intent)
+
+
             }
 
             override fun onCancelled(error: DatabaseError) {
