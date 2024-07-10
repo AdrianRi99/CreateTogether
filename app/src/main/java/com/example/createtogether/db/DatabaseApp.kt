@@ -18,29 +18,3 @@ abstract class DatabaseApp : RoomDatabase() {
 
 
 
-//From CA-T
-//abstract fun getNotesDao(): ReportDao
-//
-//abstract fun getChallengeDao(): ChallengeDao
-//
-//companion object {
-//    // Singleton prevents multiple instances of database opening at the
-//    // same time - would be very bad for performance
-//    @Volatile
-//    private var INSTANCE: DatabaseApp? = null
-//
-//    fun getDatabase(context: Context): DatabaseApp {
-//        // if the INSTANCE is not null, then return it,
-//        // if it is, then create the database
-//        return INSTANCE ?: synchronized(this) {
-//            val instance = Room.databaseBuilder(
-//                context.applicationContext,
-//                DatabaseApp::class.java,
-//                "database"
-//            ).build()
-//            INSTANCE = instance
-//            // return instance
-//            return instance
-//        }
-//    }
-//}

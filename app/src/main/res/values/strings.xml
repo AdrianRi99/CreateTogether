@@ -5,10 +5,11 @@
 
     <string-array name="spinner_text_categories">
         <item>Undefined</item>
+        <item>Short Story</item>
         <item>Novel</item>
         <item>Poetry</item>
         <item>Song</item>
-        <item>Movie Script</item>
+        <item>Script</item>
         <item>Idea</item>
         <item>Plan</item>
     </string-array>

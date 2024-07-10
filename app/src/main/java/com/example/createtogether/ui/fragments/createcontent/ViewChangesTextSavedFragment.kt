@@ -163,7 +163,7 @@ class ViewChangesTextSavedFragment : Fragment(R.layout.fragment_view_changes_tex
 
                 Toast.makeText(
                     requireActivity(),
-                    "Text Uploaded",
+                    "Text Updated",
                     Toast.LENGTH_LONG
                 ).show()
             }

@@ -4,15 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.requests.ShowRequestsFragment">
+    tools:context=".ui.fragments.requests.ShowRequestsFragment">
 
     <TextView
         android:id="@+id/tvInspirationTerms"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="List of requests"
-        android:textSize="17sp"
+        android:layout_marginTop="20dp"
+        android:text="Requests"
+        android:textSize="25sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"

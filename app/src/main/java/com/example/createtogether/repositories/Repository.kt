@@ -21,10 +21,7 @@ class Repository @Inject constructor(
         textContentDao.update(textContent)
     }
 
-    //From PolicyChecker
-//    suspend fun updateFileTitle(fileId: Int, newTitle: String) {
-//        filesDao.updateFileTitle(fileId, newTitle)
-//    }
+
 
     suspend fun delete(textContent: TextContent) {
         textContentDao.delete(textContent)

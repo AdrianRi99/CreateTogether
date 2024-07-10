@@ -1,4 +1,4 @@
-package com.example.createtogether.ui.requests
+package com.example.createtogether.ui.fragments.requests
 
 import android.os.Bundle
 import android.util.Log
@@ -8,15 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.createtogether.R
-import com.example.createtogether.databinding.FragmentDisplayTextFoundBinding
 import com.example.createtogether.databinding.FragmentViewChangesRequestBinding
-import com.example.createtogether.databinding.FragmentViewChangesTextFoundBinding
-import com.example.createtogether.databinding.FragmentViewChangesTextSavedBinding
 import com.example.createtogether.db.models.TextContent
 import com.example.createtogether.ui.viewmodels.ViewModel
+import com.example.createtogether.utility.BaseUtility
 import com.example.createtogether.utility.DiffUtil
 import com.example.createtogether.utility.UserUtil
 import com.google.firebase.database.DataSnapshot
@@ -143,12 +140,14 @@ class ViewChangesRequestFragment : Fragment(R.layout.fragment_view_changes_reque
                 }
             })
 
+            BaseUtility.showToast(requireActivity(), "Request Accepted")
+
             requestsReference.child(userId).child(request.requestId).child("requestStatus").setValue("Accepted")
             requireActivity().finish()
         }
 
         binding.btnDeclineRequest.setOnClickListener {
-            Log.d("HeyJa", "Declined")
+            BaseUtility.showToast(requireActivity(), "Request Declined")
 
             requestsReference.child(userId).child(request.requestId).child("requestStatus").setValue("Declined")
             requireActivity().finish()

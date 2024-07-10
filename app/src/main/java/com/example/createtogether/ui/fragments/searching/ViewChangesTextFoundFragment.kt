@@ -18,6 +18,7 @@ import com.example.createtogether.db.models.Request
 import com.example.createtogether.db.models.TextContent
 import com.example.createtogether.ui.fragments.createcontent.OpenSavedTextsFragmentDirections
 import com.example.createtogether.ui.viewmodels.ViewModel
+import com.example.createtogether.utility.BaseUtility
 import com.example.createtogether.utility.DiffUtil
 import com.example.createtogether.utility.UserUtil
 import com.google.firebase.database.FirebaseDatabase
@@ -85,10 +86,10 @@ class ViewChangesTextFoundFragment : Fragment(R.layout.fragment_view_changes_tex
         binding.btnSaveLocally.setOnClickListener {
 
             if(UserUtil.getUserId(requireActivity()) == textFound.creatorId) {
-                Toast.makeText(requireActivity(), "You are the creator", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireActivity(), "Text saved - You are the owner of this text", Toast.LENGTH_LONG).show()
                 saveLocally("Downloaded")
             } else {
-                Toast.makeText(requireActivity(), "You are not the creator", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireActivity(), "Text saved - you are not allowed to share it as you are not the owner", Toast.LENGTH_LONG).show()
                 saveLocally("Copied")
             }
         }
@@ -115,6 +116,7 @@ class ViewChangesTextFoundFragment : Fragment(R.layout.fragment_view_changes_tex
             val request = Request(requestId, "Waiting for review", savedUsername, textFound.textId, modifiedTextTitle, modifiedText)
             requestsReference.child(textFound.creatorId).child(requestId).setValue(request)
 
+            BaseUtility.showToast(requireActivity(), "Request send")
 //            val action = ViewChangesTextFoundFragmentDirections.actionViewChangesTextFoundFragmentToSearchFragment()
 //            findNavController().navigate(action)
             requireActivity().finish()

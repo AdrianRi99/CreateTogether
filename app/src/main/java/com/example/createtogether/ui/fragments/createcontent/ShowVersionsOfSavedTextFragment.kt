@@ -49,7 +49,7 @@ class ShowVersionsOfSavedTextFragment : Fragment(R.layout.fragment_show_versions
         textVersions = args.textVersions.toMutableList()
         textVersionsAdapter.updateListOfSavedTexts(textVersions)
 
-        binding.tvShowNumberOfVersions.text = textVersions.size.toString()
+//        binding.tvShowNumberOfVersions.text = textVersions.size.toString()
 
 //        binding.btnBack.setOnClickListener {
 //            val action =

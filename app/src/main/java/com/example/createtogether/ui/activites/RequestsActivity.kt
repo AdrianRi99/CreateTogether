@@ -1,4 +1,4 @@
-package com.example.createtogether.ui.requests
+package com.example.createtogether.ui.activites
 
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar

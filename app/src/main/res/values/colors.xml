@@ -5,4 +5,9 @@
 
     <color name="lightBlack">#F32E2E2E</color>
     <color name="lightGrey">#C2C0C0</color>
+
+    <color name="red">#B25B6A</color>
+    <color name="blau">#408199</color>
+
+
 </resources>

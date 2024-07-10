@@ -22,6 +22,7 @@ class RequestsAdapter(
 
 
     inner class RequestViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val tvTextTitle: TextView = itemView.findViewById(R.id.tvTextTitle)
         val tvRequestByName: TextView = itemView.findViewById(R.id.tvRequestByName)
         val tvRequestStatus: TextView = itemView.findViewById(R.id.tvRequestStatus)
 
@@ -56,6 +57,7 @@ class RequestsAdapter(
     override fun onBindViewHolder(holder: RequestViewHolder, position: Int) {
         val request = differ.currentList[position]
 
+        holder.tvTextTitle.text = request.modifiedTextTitle
         holder.tvRequestByName.text = request.requestCreator
         holder.tvRequestStatus.text = request.requestStatus
 

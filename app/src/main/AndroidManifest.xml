@@ -14,19 +14,19 @@
         android:theme="@style/Theme.CreateTogether"
         tools:targetApi="31">
         <activity
-            android:name=".ui.tempPackage.SearchActivity"
+            android:name=".ui.activites.SearchActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.tempPackage.WriteTextActivity"
+            android:name=".ui.activites.WriteTextActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.tempPackage.SavedTextsActivity"
+            android:name=".ui.activites.SavedTextsActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.tempPackage.ProfileActivity"
+            android:name=".ui.activites.ProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.requests.RequestsActivity"
+            android:name=".ui.activites.RequestsActivity"
             android:exported="false"
             android:label="@string/title_activity_requests"
             android:theme="@style/Theme.CreateTogether" />

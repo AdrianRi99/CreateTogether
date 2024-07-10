@@ -6,13 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
 import com.example.createtogether.R
 import com.example.createtogether.databinding.FragmentCreateContentBinding
-import com.example.createtogether.ui.tempPackage.ProfileActivity
-import com.example.createtogether.ui.tempPackage.WriteTextActivity
-import com.example.createtogether.ui.requests.RequestsActivity
-import com.example.createtogether.ui.tempPackage.SavedTextsActivity
+import com.example.createtogether.ui.activites.ProfileActivity
+import com.example.createtogether.ui.activites.WriteTextActivity
+import com.example.createtogether.ui.activites.RequestsActivity
+import com.example.createtogether.ui.activites.SavedTextsActivity
 
 class CreateContentFragment : Fragment(R.layout.fragment_create_content) {
 

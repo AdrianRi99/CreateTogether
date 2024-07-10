@@ -9,9 +9,13 @@ import com.example.createtogether.ressources.diff_match_patch
 
 class DiffUtil {
 
-    val red = Color.parseColor("#FFC0CB") // pastellrosa Farbcode
+//    val red = Color.parseColor("#FFC0CB") // pastellrosa Farbcode
+//    val yellow = Color.parseColor("#FFFACD") // pastellgelb Farbcode
+//    val blau = Color.parseColor("#7EC8E3") // pastellblau Farbcode
+
+    val red = Color.parseColor("#B25B6A") // pastellrosa Farbcode
     val yellow = Color.parseColor("#FFFACD") // pastellgelb Farbcode
-    val blau = Color.parseColor("#7EC8E3") // pastellblau Farbcode
+    val blau = Color.parseColor("#408199") // pastellblau Farbcode
 
     fun generateHighlightedTextWithAdditionsAndRemovals(originalText: String, modifiedText: String): SpannableString {
         val dmp = diff_match_patch()

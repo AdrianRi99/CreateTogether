@@ -1,4 +1,4 @@
-package com.example.createtogether.ui.tempPackage
+package com.example.createtogether.ui.activites
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -10,6 +10,7 @@ import com.example.createtogether.R
 import com.example.createtogether.databinding.ActivityWriteTextBinding
 import com.example.createtogether.db.models.TextContent
 import com.example.createtogether.ui.viewmodels.ViewModel
+import com.example.createtogether.utility.BaseUtility.showToast
 import com.example.createtogether.utility.UserUtil
 import com.google.firebase.database.FirebaseDatabase
 import dagger.hilt.android.AndroidEntryPoint
@@ -51,26 +52,36 @@ class WriteTextActivity : AppCompatActivity() {
         binding.btnSaveNewText.setOnClickListener {
             val enteredTextTitle = binding.editTextNewTextTitle.text.toString()
             val enteredText = binding.editTextNewText.text.toString()
-//            Log.d("Oha", enteredText)
-            val textAuthenticator = textId
 
-            val newText = TextContent(
-                userId,
-                savedUsername,
-                textId,
-                textAuthenticator,
-                enteredTextTitle,
-                enteredText,
-                selectedTextCategory,
-                null,
-                0,
-                "Uploaded"
-            )
 
-            categoriesReference.child(selectedTextCategory).child(textId).setValue(newText)
-            viewModel.addText(newText)
+            if (enteredTextTitle.isEmpty()) {
+                showToast(this, "Enter a title")
+            } else if (enteredText.isEmpty()) {
+                showToast(this, "Enter a text")
+            } else {
+                val textAuthenticator = textId
 
-            finish()
+                val newText = TextContent(
+                    userId,
+                    savedUsername,
+                    textId,
+                    textAuthenticator,
+                    enteredTextTitle,
+                    enteredText,
+                    selectedTextCategory,
+                    null,
+                    0,
+                    "Uploaded"
+                )
+
+                categoriesReference.child(selectedTextCategory).child(textId).setValue(newText)
+                viewModel.addText(newText)
+
+                showToast(this, "Text Saved")
+
+                finish()
+            }
+
 //            val action = NewTextFragmentDirections.actionNewTextFragmentToCreateContentFragment()
 //            findNavController().navigate(action)
         }
@@ -90,7 +101,7 @@ class WriteTextActivity : AppCompatActivity() {
             randomIndexes.add(Random.nextInt(0, inspirationTerms.size))
         }
         // Die ausgewählten Hunde in den resultierenden String einfügen, durch zwei Leerzeichen getrennt
-        return randomIndexes.joinToString("  ") { inspirationTerms[it] }
+        return randomIndexes.joinToString("   ") { inspirationTerms[it] }
     }
 
     private fun getInspirationTerms(context: Context): List<String> {

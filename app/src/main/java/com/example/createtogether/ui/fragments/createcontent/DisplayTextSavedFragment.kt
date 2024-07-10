@@ -12,6 +12,7 @@ import com.example.createtogether.R
 import com.example.createtogether.databinding.FragmentDisplayTextFoundBinding
 import com.example.createtogether.databinding.FragmentDisplayTextSavedBinding
 import com.example.createtogether.ui.fragments.searching.DisplayTextFoundFragmentDirections
+import com.example.createtogether.utility.BaseUtility
 import com.example.createtogether.utility.UserUtil
 
 class DisplayTextSavedFragment : Fragment(R.layout.fragment_display_text_saved) {
@@ -43,6 +44,7 @@ class DisplayTextSavedFragment : Fragment(R.layout.fragment_display_text_saved) 
                 binding.tvTextSaved.visibility = View.GONE
                 binding.scrollViewTextFound.visibility = View.GONE
                 binding.tvContributers.visibility = View.GONE
+                binding.view2.visibility = View.GONE
 
 
                 binding.editTextTextSavedTitle.visibility = View.VISIBLE
@@ -56,6 +58,8 @@ class DisplayTextSavedFragment : Fragment(R.layout.fragment_display_text_saved) 
                 binding.tvTextSaved.visibility = View.VISIBLE
                 binding.scrollViewTextFound.visibility = View.VISIBLE
                 binding.tvContributers.visibility = View.VISIBLE
+                binding.view2.visibility = View.VISIBLE
+
 
                 binding.editTextTextSavedTitle.visibility = View.GONE
                 binding.editTextTextSaved.visibility = View.GONE
@@ -72,12 +76,18 @@ class DisplayTextSavedFragment : Fragment(R.layout.fragment_display_text_saved) 
         }
 
         binding.btnViewChanges.setOnClickListener {
+
             val modifiedTextTitle = binding.editTextTextSavedTitle.text.toString()
             val modifiedText = binding.editTextTextSaved.text.toString()
 
-            val action = DisplayTextSavedFragmentDirections.actionDisplayTextSavedFragmentToViewChangesTextSavedFragment(textSaved, modifiedTextTitle, modifiedText)
-            findNavController().navigate(action)
-
+            if (modifiedTextTitle.isEmpty()) {
+                BaseUtility.showToast(requireActivity(), "Enter a title")
+            } else if (modifiedText.isEmpty()) {
+                BaseUtility.showToast(requireActivity(), "The text-field can't be empty")
+            } else {
+                val action = DisplayTextSavedFragmentDirections.actionDisplayTextSavedFragmentToViewChangesTextSavedFragment(textSaved, modifiedTextTitle, modifiedText)
+                findNavController().navigate(action)
+            }
         }
 
 //        binding.btnBack.setOnClickListener {

@@ -1,18 +1,12 @@
-package com.example.createtogether.ui.tempPackage
+package com.example.createtogether.ui.activites
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
-import androidx.core.os.bundleOf
-import androidx.navigation.findNavController
-import com.example.createtogether.R
-import com.example.createtogether.databinding.ActivitySavedTextsBinding
 import com.example.createtogether.databinding.ActivitySearchBinding
 import com.example.createtogether.db.models.TextContent
 import com.example.createtogether.ui.viewmodels.SharedViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.parcelize.Parcelize
 
 @AndroidEntryPoint
 class SearchActivity : AppCompatActivity() {

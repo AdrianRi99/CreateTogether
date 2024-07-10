@@ -1,13 +1,11 @@
-package com.example.createtogether.ui.requests
+package com.example.createtogether.ui.fragments.requests
 
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.createtogether.R
@@ -15,8 +13,6 @@ import com.example.createtogether.adapters.RequestItemClickInterface
 import com.example.createtogether.adapters.RequestsAdapter
 import com.example.createtogether.databinding.FragmentShowRequestsBinding
 import com.example.createtogether.db.models.Request
-import com.example.createtogether.ui.fragments.createcontent.OpenSavedTextsFragmentDirections
-import com.example.createtogether.ui.viewmodels.ViewModel
 import com.example.createtogether.utility.UserUtil
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -92,7 +88,9 @@ class ShowRequestsFragment : Fragment(R.layout.fragment_show_requests), RequestI
                 if(requests.isEmpty()) {
                     binding.textViewNoRequests.visibility = View.VISIBLE
                 } else {
-                    requestsAdapter.updateListOfRequests(requests)
+
+                    val sortedRequests = requests.sortedBy { it.requestStatus != "Waiting for review" }
+                    requestsAdapter.updateListOfRequests(sortedRequests)
                 }
             }
 

@@ -1,4 +1,4 @@
-package com.example.createtogether.ui.tempPackage
+package com.example.createtogether.ui.activites
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

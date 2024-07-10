@@ -7,16 +7,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
 import com.example.createtogether.R
 import com.example.createtogether.db.models.TextContent
 import com.example.createtogether.databinding.FragmentSearchBinding
-import com.example.createtogether.ui.tempPackage.Person
-import com.example.createtogether.ui.tempPackage.SavedTextsActivity
-import com.example.createtogether.ui.tempPackage.SearchActivity
-import com.example.createtogether.ui.viewmodels.SharedViewModel
+import com.example.createtogether.ui.activites.SearchActivity
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase

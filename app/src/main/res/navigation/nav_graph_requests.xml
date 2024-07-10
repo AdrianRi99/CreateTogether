@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/showRequestsFragment"
-        android:name="com.example.createtogether.ui.requests.ShowRequestsFragment"
+        android:name="com.example.createtogether.ui.fragments.requests.ShowRequestsFragment"
         android:label="fragment_show_requests"
         tools:layout="@layout/fragment_show_requests" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/viewChangesRequestFragment"
-        android:name="com.example.createtogether.ui.requests.ViewChangesRequestFragment"
+        android:name="com.example.createtogether.ui.fragments.requests.ViewChangesRequestFragment"
         android:label="ViewChangesRequestFragment"
         tools:layout="@layout/fragment_view_changes_request">
         <argument

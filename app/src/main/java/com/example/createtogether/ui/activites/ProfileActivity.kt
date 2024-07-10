@@ -1,10 +1,11 @@
-package com.example.createtogether.ui.tempPackage
+package com.example.createtogether.ui.activites
 
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.createtogether.databinding.ActivityProfileBinding
+import com.example.createtogether.utility.BaseUtility
 
 class ProfileActivity : AppCompatActivity() {
 
@@ -25,9 +26,15 @@ class ProfileActivity : AppCompatActivity() {
         binding.btnSaveUserName.setOnClickListener {
             val userName = binding.editTextUsername.text.toString().trim()
 
-            with(sharedPreferences.edit()) {
-                putString("userName", userName)
-                apply()
+            if (userName.isEmpty()) {
+                BaseUtility.showToast(this, "Enter a username")
+            } else {
+                with(sharedPreferences.edit()) {
+                    putString("userName", userName)
+                    apply()
+                }
+
+                BaseUtility.showToast(this, "Saved state")
             }
         }
     }

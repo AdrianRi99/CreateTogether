@@ -47,6 +47,7 @@ class DisplayTextFoundFragment : Fragment(R.layout.fragment_display_text_found) 
                 binding.scrollViewTextFound.visibility = View.GONE
                 binding.tvContributers.visibility = View.GONE
                 binding.iVLike.visibility = View.GONE
+                binding.view2.visibility = View.GONE
 
                 binding.editTextTextFoundTitle.visibility = View.VISIBLE
                 binding.editTextTextFound.visibility = View.VISIBLE
@@ -60,6 +61,8 @@ class DisplayTextFoundFragment : Fragment(R.layout.fragment_display_text_found) 
                 binding.scrollViewTextFound.visibility = View.VISIBLE
                 binding.tvContributers.visibility = View.VISIBLE
                 binding.iVLike.visibility = View.VISIBLE
+                binding.view2.visibility = View.VISIBLE
+
 
                 binding.editTextTextFoundTitle.visibility = View.GONE
                 binding.editTextTextFound.visibility = View.GONE
